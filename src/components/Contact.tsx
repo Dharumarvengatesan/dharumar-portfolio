@@ -29,6 +29,7 @@ export default function Contact() {
               Whether you have a question, want to collaborate on a mobile project, or simply want to say hello, feel free to drop a message.
             </p>
 
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
               <a href="mailto:dharumar13@gmail.com" style={{ display: "flex", alignItems: "center", gap: "1rem", color: "var(--text-main)", transition: "color 0.3s ease", cursor: "pointer" }} onMouseEnter={(e) => e.currentTarget.style.color = "var(--accent-cyan)"} onMouseLeave={(e) => e.currentTarget.style.color = "var(--text-main)"}>
                 ✉️ <span>dharumar13@gmail.com</span>
               </a>
