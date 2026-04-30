@@ -143,4 +143,15 @@ ul {
   section {
     padding: 4rem 0 !important;
   }
+
+  /* Hero: stack vertically on mobile */
+  .hero-inner {
+    flex-direction: column-reverse !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .hero-inner .hero-text {
+    align-items: center !important;
+  }
 }
