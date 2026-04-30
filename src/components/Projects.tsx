@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import DeviceFrame from "./DeviceFrame";
 
 const projects = [
@@ -108,10 +109,12 @@ export default function Projects() {
                   onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.05)"}
                   onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
                 >
-                  <img 
+                  <Image 
                     alt="Get it on Google Play" 
                     src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
-                    style={{ height: "48px" }}
+                    width={150}
+                    height={48}
+                    style={{ height: "48px", width: "auto" }}
                   />
                 </a>
               </div>
