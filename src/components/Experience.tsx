@@ -37,6 +37,16 @@ const experiences = [
       "Optimized code and reduced app crash rates by 25%.",
       "Implemented Firebase authentication and push notification services."
     ]
+  },
+  {
+    role: "Mobile Application Developer",
+    company: "Pattronize",
+    location: "Coimbatore, Tamilnadu",
+    period: "Aug 2019 - Jul 2021",
+    description: [
+      "Created and maintained mobile applications with high performance and usability.",
+      "Designed app architectures and optimized performance."
+    ]
   }
 ];
 
