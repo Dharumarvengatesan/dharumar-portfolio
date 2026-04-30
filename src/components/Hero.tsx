@@ -6,19 +6,6 @@ export default function Hero() {
   return (
     <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", paddingTop: "5rem", position: "relative", overflow: "hidden" }}>
       
-      {/* Flutter Aesthetics Background Elements */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.05, scale: 1 }}
-        transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-        style={{ position: "absolute", right: "-10%", top: "20%", zIndex: -1 }}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M2.5 12h19M12 2.5v19M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93" />
-          <circle cx="12" cy="12" r="10" />
-        </svg>
-      </motion.div>
-
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 0.1, y: 0 }}

@@ -5,18 +5,23 @@ import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
+import BackgroundAnimation from "@/components/BackgroundAnimation";
 
 export default function Home() {
   return (
     <main style={{ minHeight: "100vh", position: "relative" }}>
-      {/* Background decorations */}
+
+      {/* Floating tech icons background */}
+      <BackgroundAnimation />
+
+      {/* Soft gradient blobs */}
       <div style={{
         position: "fixed",
         top: "-10%",
         left: "-10%",
         width: "50%",
         height: "50%",
-        background: "radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%)",
+        background: "radial-gradient(circle, rgba(14, 165, 233, 0.07) 0%, transparent 70%)",
         zIndex: -1,
         pointerEvents: "none"
       }}></div>
@@ -26,7 +31,7 @@ export default function Home() {
         right: "-10%",
         width: "50%",
         height: "50%",
-        background: "radial-gradient(circle, rgba(138, 43, 226, 0.05) 0%, rgba(0, 0, 0, 0) 70%)",
+        background: "radial-gradient(circle, rgba(124, 58, 237, 0.07) 0%, transparent 70%)",
         zIndex: -1,
         pointerEvents: "none"
       }}></div>
