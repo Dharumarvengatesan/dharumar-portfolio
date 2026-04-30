@@ -6,10 +6,10 @@ import DeviceFrame from "./DeviceFrame";
 
 const projects = [
   {
-    title: "Action Tracker",
+    title: "ASG Central",
     description: "Enterprise workflow and activity tracking application with push notifications, API integration, task workflows, and performance optimization.",
     tech: ["Flutter", "Dart", "REST API", "Push Notifications"],
-    link: "https://play.google.com/store/apps/details?id=com.action.tracker",
+    link: "https://play.google.com/store/apps/details?id=com.fortigrid.pact&pcampaignid=web_share",
     colorStart: "#2E3192",
     colorEnd: "#1BFFFF"
   },
