@@ -30,10 +30,10 @@ export default function About() {
               <strong>Role:</strong> Senior Flutter Developer
             </p>
             <p style={{ fontSize: "1.1rem" }}>
-              <strong>Experience:</strong> 6+ Years
+              <strong>Experience:</strong> 6.5+ Years
             </p>
             <p style={{ marginTop: "1rem", color: "var(--text-muted)" }}>
-              6+ years of professional experience in Flutter development. Strong expertise in building native-feeling Android and iOS applications with a single codebase.
+              6.5+ years of professional experience in Flutter development. Strong expertise in building native-feeling Android and iOS applications with a single codebase.
             </p>
           </motion.div>
 

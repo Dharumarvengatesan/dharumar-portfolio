@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 
 const skills = [
-  "Flutter", "Dart", "Firebase", "REST API", "Provider", 
-  "Bloc", "GetX", "SQLite", "Hive", "Git", "CI/CD", "Android", "iOS"
+  "Flutter", "Dart", "Java", "Kotlin", "Firebase", "REST API", "Provider", 
+  "Bloc", "GetX", "SQLite", "Hive", "Git", "CI/CD", "Agile", "Android", "iOS", "Web", "Desktop"
 ];
 
 export default function Skills() {

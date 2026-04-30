@@ -68,7 +68,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.4 }}
           style={{ fontSize: "1.2rem", color: "var(--text-muted)", marginTop: "1rem", maxWidth: "600px" }}
         >
-          6+ years building scalable cross-platform mobile applications using Flutter, Firebase, REST APIs, and clean architecture.
+          6.5+ years building scalable cross-platform mobile applications using Flutter, Firebase, REST APIs, and clean architecture.
         </motion.p>
         
         <motion.div 
