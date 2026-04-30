@@ -56,7 +56,7 @@ export default function Contact() {
             className="glass"
             style={{ padding: "2rem", borderRadius: "16px" }}
           >
-            <form onSubmit={(e) => e.preventDefault()} style={{ display: "flex", flexDirection: "column" }}>
+            <form action="mailto:dharumar13@gmail.com" method="post" encType="text/plain" style={{ display: "flex", flexDirection: "column" }}>
               <input aria-label="Your Name" type="text" placeholder="Your Name" className="form-input" required />
               <input aria-label="Your Email" type="email" placeholder="Your Email" className="form-input" required />
               <textarea aria-label="Your Message" placeholder="Your Message" className="form-input" rows={5} required style={{ resize: "vertical" }}></textarea>
