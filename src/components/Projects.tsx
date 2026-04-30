@@ -6,7 +6,7 @@ import DeviceFrame from "./DeviceFrame";
 
 const projects = [
   {
-    title: "ASG Central",
+    title: "PACT - Team Management",
     description: "Enterprise workflow and activity tracking application with push notifications, API integration, task workflows, and performance optimization.",
     tech: ["Flutter", "Dart", "REST API", "Push Notifications"],
     link: "https://play.google.com/store/apps/details?id=com.fortigrid.pact&pcampaignid=web_share",
