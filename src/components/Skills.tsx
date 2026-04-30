@@ -9,7 +9,7 @@ const skills = [
 
 export default function Skills() {
   return (
-    <section id="skills" style={{ padding: "5rem 0", background: "rgba(10, 10, 10, 0.5)" }}>
+    <section id="skills" style={{ padding: "5rem 0", background: "var(--bg-color-alt)" }}>
       <div className="container">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -29,16 +29,17 @@ export default function Skills() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              whileHover={{ scale: 1.1, backgroundColor: "rgba(138, 43, 226, 0.2)", borderColor: "var(--accent-cyan)" }}
+              whileHover={{ scale: 1.1, backgroundColor: "rgba(124, 58, 237, 0.1)", borderColor: "var(--accent-cyan)" }}
               style={{
                 padding: "0.8rem 1.5rem",
-                background: "rgba(25, 25, 35, 0.6)",
-                border: "1px solid rgba(255, 255, 255, 0.1)",
+                background: "rgba(255, 255, 255, 0.85)",
+                border: "1.5px solid rgba(99, 102, 241, 0.18)",
                 borderRadius: "30px",
                 fontWeight: 500,
                 color: "var(--text-main)",
                 cursor: "default",
-                backdropFilter: "blur(4px)"
+                backdropFilter: "blur(4px)",
+                boxShadow: "0 2px 8px rgba(99, 102, 241, 0.08)"
               }}
             >
               {skill}

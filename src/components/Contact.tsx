@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
-    <section id="contact" style={{ padding: "5rem 0", background: "rgba(10, 10, 10, 0.5)" }}>
+    <section id="contact" style={{ padding: "5rem 0", background: "var(--bg-color-alt)" }}>
       <div className="container">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}

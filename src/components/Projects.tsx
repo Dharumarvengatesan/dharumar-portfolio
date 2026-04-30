@@ -57,7 +57,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" style={{ padding: "5rem 0", background: "rgba(5, 5, 5, 1)" }}>
+    <section id="projects" style={{ padding: "5rem 0", background: "var(--bg-color)" }}>
       <div className="container">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}

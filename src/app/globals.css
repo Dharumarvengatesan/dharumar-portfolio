@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --bg-color: #050505;
-  --bg-color-alt: #0a0a0a;
-  --text-main: #f0f0f0;
-  --text-muted: #a0a0a0;
-  --accent-cyan: #00f0ff;
-  --accent-purple: #8a2be2;
-  --card-bg: rgba(25, 25, 35, 0.4);
-  --card-border: rgba(255, 255, 255, 0.05);
+  --bg-color: #f8f9fc;
+  --bg-color-alt: #eef1f8;
+  --text-main: #1a1a2e;
+  --text-muted: #6b7280;
+  --accent-cyan: #0ea5e9;
+  --accent-purple: #7c3aed;
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(99, 102, 241, 0.15);
 }
 
 * {
@@ -20,6 +20,9 @@
 
 body {
   background-color: var(--bg-color);
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(124, 58, 237, 0.08) 0%, transparent 60%);
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
@@ -41,7 +44,7 @@ ul {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--card-border);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 24px 0 rgba(99, 102, 241, 0.08), 0 1px 4px rgba(0,0,0,0.04);
 }
 
 /* Typography Utilities */
@@ -76,11 +79,13 @@ ul {
   font-weight: 600;
   border: none;
   cursor: pointer;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.3);
 }
 
 .btn-primary:hover {
   opacity: 0.9;
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
 }
 
 .btn-outline {
@@ -90,31 +95,38 @@ ul {
   background: transparent;
   color: var(--text-main);
   font-weight: 600;
-  border: 1px solid var(--card-border);
+  border: 1.5px solid var(--card-border);
   cursor: pointer;
-  transition: border-color 0.3s ease, background 0.3s ease;
+  transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
 }
 
 .btn-outline:hover {
   border-color: var(--accent-purple);
-  background: rgba(138, 43, 226, 0.1);
+  background: rgba(124, 58, 237, 0.07);
+  color: var(--accent-purple);
 }
 
 /* Form Styles */
 .form-input {
   width: 100%;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid var(--card-border);
   border-radius: 8px;
   color: var(--text-main);
   margin-bottom: 1rem;
   font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
 }
 
 .form-input:focus {
   outline: none;
   border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12);
 }
 
 /* Mobile Responsive Adjustments */
