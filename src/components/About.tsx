@@ -66,7 +66,7 @@ export default function About() {
           >
             <h3 style={{ fontSize: "1.5rem", marginBottom: "1rem", color: "var(--accent-cyan)" }}>Impact</h3>
             <ul style={{ color: "var(--text-muted)", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-              <li>🚀 5+ Apps live on Google Play</li>
+              <li>🚀 6+ Apps live on Google Play</li>
               <li>⚡ 99.9% Crash-Free User Sessions</li>
               <li>🏗️ Scalable Clean Architecture Implementation</li>
               <li>🔄 Automated CI/CD Pipelines with Codemagic</li>

@@ -14,6 +14,14 @@ const projects = [
     colorEnd: "#1BFFFF"
   },
   {
+    title: "Action Tracker",
+    description: "Enterprise workflow and activity tracking application with push notifications, API integration, task workflows, and performance optimization.",
+    tech: ["Flutter", "Dart", "REST API", "Push Notifications"],
+    link: "https://play.google.com/store/apps/details?id=com.action.tracker",
+    colorStart: "#4A00E0",
+    colorEnd: "#8E2DE2"
+  },
+  {
     title: "PACT Vehicle",
     description: "Vehicle management and tracking app with form workflows, API integration, and enterprise mobility features.",
     tech: ["Flutter", "State Management", "API Integration"],
