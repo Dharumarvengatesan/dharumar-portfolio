@@ -140,7 +140,7 @@ export default function Hero() {
             style={{ position: "relative", zIndex: 2 }}
           >
             <Image
-              src="/profile.png"
+              src="/profile.jpg"
               alt="Dharumar V - Senior Flutter Developer"
               width={320}
               height={320}
