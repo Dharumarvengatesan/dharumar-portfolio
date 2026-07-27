@@ -71,7 +71,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.4 }}
             style={{ fontSize: "1.05rem", color: "var(--text-muted)", lineHeight: 1.7, maxWidth: "520px" }}
           >
-            6.5+ years building scalable cross-platform mobile applications using Flutter, Firebase, REST APIs, and clean architecture.
+            6+ years building scalable cross-platform mobile applications using Flutter, Firebase, REST APIs, and clean architecture.
           </motion.p>
 
           {/* Stats row */}
@@ -82,7 +82,7 @@ export default function Hero() {
             style={{ display: "flex", gap: "2rem", marginTop: "0.5rem" }}
           >
             {[
-              { value: "6.5+", label: "Years Exp." },
+              { value: "6+", label: "Years Exp." },
               { value: "6+", label: "Live Apps" },
               { value: "99.9%", label: "Crash-Free" },
             ].map((stat) => (
