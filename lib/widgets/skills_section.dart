@@ -20,7 +20,7 @@ class SkillsSection extends StatelessWidget {
           horizontal: isMobile ? 24 : 80, vertical: 80),
       child: Column(
         children: [
-          _SectionTitle(title: 'My', highlight: 'Skills'),
+          const _SectionTitle(title: 'My', highlight: 'Skills'),
           const SizedBox(height: 48),
           Center(
             child: Wrap(
@@ -61,18 +61,18 @@ class _SkillChipState extends State<_SkillChip> {
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         decoration: BoxDecoration(
           color: _hovered
-              ? AppTheme.accentPurple.withOpacity(0.1)
-              : Colors.white.withOpacity(0.85),
+              ? AppTheme.accentPurple.withValues(alpha: 0.1)
+              : Colors.white.withValues(alpha: 0.85),
           border: Border.all(
             color: _hovered
                 ? AppTheme.accentCyan
-                : const Color(0xFF6366F1).withOpacity(0.18),
+                : const Color(0xFF6366F1).withValues(alpha: 0.18),
             width: 1.5,
           ),
           borderRadius: BorderRadius.circular(30),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFF6366F1).withOpacity(0.08),
+              color: const Color(0xFF6366F1).withValues(alpha: 0.08),
               blurRadius: 8,
             ),
           ],

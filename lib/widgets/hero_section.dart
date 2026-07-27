@@ -71,8 +71,8 @@ class _HeroSectionState extends State<HeroSection>
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           decoration: BoxDecoration(
-            color: AppTheme.accentCyan.withOpacity(0.1),
-            border: Border.all(color: AppTheme.accentCyan.withOpacity(0.25)),
+            color: AppTheme.accentCyan.withValues(alpha: 0.1),
+            border: Border.all(color: AppTheme.accentCyan.withValues(alpha: 0.25)),
             borderRadius: BorderRadius.circular(50),
           ),
           child: Row(
@@ -81,7 +81,7 @@ class _HeroSectionState extends State<HeroSection>
               Container(
                 width: 8,
                 height: 8,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppTheme.accentCyan,
                   boxShadow: [
@@ -158,11 +158,11 @@ class _HeroSectionState extends State<HeroSection>
         Row(
           mainAxisAlignment:
               isMobile ? MainAxisAlignment.center : MainAxisAlignment.start,
-          children: [
+          children: const [
             _StatItem('6+', 'Years Exp.'),
-            const SizedBox(width: 32),
+            SizedBox(width: 32),
             _StatItem('6+', 'Live Apps'),
-            const SizedBox(width: 32),
+            SizedBox(width: 32),
             _StatItem('99.9%', 'Crash-Free'),
           ],
         )
@@ -260,11 +260,11 @@ class _HeroSectionState extends State<HeroSection>
               ),
             ),
             // Open to Work badge
-            Positioned(
+            const Positioned(
               top: 30,
               right: 0,
               child: _FloatingBadge(
-                icon: const Text('🚀', style: TextStyle(fontSize: 14)),
+                icon: Text('🚀', style: TextStyle(fontSize: 14)),
                 label: 'Open to Work',
                 color: AppTheme.accentPurple,
                 delay: 1,
@@ -344,8 +344,8 @@ class _PrimaryButtonState extends State<_PrimaryButton> {
             gradient: AppTheme.cyanPurpleGradient,
             borderRadius: BorderRadius.circular(50),
             boxShadow: _hovered
-                ? [BoxShadow(color: AppTheme.accentCyan.withOpacity(0.4), blurRadius: 20)]
-                : [],
+                ? [BoxShadow(color: AppTheme.accentCyan.withValues(alpha: 0.4), blurRadius: 20)]
+                : const [],
           ),
           child: Text(widget.label,
               style: const TextStyle(
@@ -383,7 +383,7 @@ class _OutlineButtonState extends State<_OutlineButton> {
           padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
           decoration: BoxDecoration(
             color: _hovered
-                ? AppTheme.accentCyan.withOpacity(0.1)
+                ? AppTheme.accentCyan.withValues(alpha: 0.1)
                 : Colors.transparent,
             border: Border.all(
                 color: _hovered
@@ -421,9 +421,9 @@ class _FloatingBadge extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
-          BoxShadow(color: color.withOpacity(0.2), blurRadius: 16)
+          BoxShadow(color: color.withValues(alpha: 0.2), blurRadius: 16)
         ],
-        border: Border.all(color: color.withOpacity(0.2)),
+        border: Border.all(color: color.withValues(alpha: 0.2)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,

@@ -102,13 +102,13 @@ class _ProjectCardState extends State<_ProjectCard> {
                           ),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Row(
+                        child: const Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(Icons.play_arrow_rounded,
+                            Icon(Icons.play_arrow_rounded,
                                 color: Colors.white, size: 18),
-                            const SizedBox(width: 6),
-                            const Text('Google Play',
+                            SizedBox(width: 6),
+                            Text('Google Play',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600,
@@ -145,10 +145,10 @@ class _PhoneMockup extends StatelessWidget {
       decoration: BoxDecoration(
         color: const Color(0xFF1A1A2E),
         borderRadius: BorderRadius.circular(30),
-        border: Border.all(color: Colors.white.withOpacity(0.15), width: 2),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.15), width: 2),
         boxShadow: [
           BoxShadow(
-            color: project.colorStart.withOpacity(0.3),
+            color: project.colorStart.withValues(alpha: 0.3),
             blurRadius: 30,
             offset: const Offset(0, 10),
           ),
@@ -175,7 +175,7 @@ class _PhoneMockup extends StatelessWidget {
               right: 0,
               child: Container(
                 height: 24,
-                color: Colors.black.withOpacity(0.2),
+                color: Colors.black.withValues(alpha: 0.2),
                 child: const Center(
                   child: SizedBox(
                     width: 60,

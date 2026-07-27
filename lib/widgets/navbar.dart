@@ -49,12 +49,12 @@ class _NavbarState extends State<Navbar> {
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
       decoration: BoxDecoration(
         color: _scrolled
-            ? AppTheme.bgColor.withOpacity(0.92)
+            ? AppTheme.bgColor.withValues(alpha: 0.92)
             : Colors.transparent,
         border: _scrolled
             ? Border(
                 bottom: BorderSide(
-                  color: Colors.white.withOpacity(0.08),
+                  color: Colors.white.withValues(alpha: 0.08),
                   width: 1,
                 ),
               )

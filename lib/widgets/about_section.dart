@@ -14,7 +14,7 @@ class AboutSection extends StatelessWidget {
           horizontal: isMobile ? 24 : 80, vertical: 80),
       child: Column(
         children: [
-          _SectionTitle(title: 'About', highlight: 'Me'),
+          const _SectionTitle(title: 'About', highlight: 'Me'),
           const SizedBox(height: 48),
           isMobile
               ? Column(
@@ -42,9 +42,9 @@ class AboutSection extends StatelessWidget {
           content: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _InfoRow('Role:', 'Senior Flutter Developer'),
+              const _InfoRow('Role:', 'Senior Flutter Developer'),
               const SizedBox(height: 8),
-              _InfoRow('Experience:', '6+ Years'),
+              const _InfoRow('Experience:', '6+ Years'),
               const SizedBox(height: 16),
               Text(
                 '6+ years of professional experience in Flutter development. Strong expertise in building native-feeling Android and iOS applications with a single codebase.',

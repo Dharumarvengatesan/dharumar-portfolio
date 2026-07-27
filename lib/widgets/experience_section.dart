@@ -50,8 +50,8 @@ class _ExperienceCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppTheme.glass,
         borderRadius: BorderRadius.circular(16),
-        border: Border(
-          left: const BorderSide(color: AppTheme.accentCyan, width: 4),
+        border: const Border(
+          left: BorderSide(color: AppTheme.accentCyan, width: 4),
           top: BorderSide(color: AppTheme.glassBorder),
           right: BorderSide(color: AppTheme.glassBorder),
           bottom: BorderSide(color: AppTheme.glassBorder),
@@ -147,8 +147,8 @@ class _TechTag extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: AppTheme.accentCyan.withOpacity(0.1),
-        border: Border.all(color: AppTheme.accentCyan.withOpacity(0.25)),
+        color: AppTheme.accentCyan.withValues(alpha: 0.1),
+        border: Border.all(color: AppTheme.accentCyan.withValues(alpha: 0.25)),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(label, style: AppTheme.labelStyle.copyWith(fontSize: 11)),

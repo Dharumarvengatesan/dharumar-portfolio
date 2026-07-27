@@ -35,8 +35,9 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
         return Stack(
           children: [
             // Base gradient
-            Container(
-              decoration: const BoxDecoration(gradient: AppTheme.bgGradient),
+            const DecoratedBox(
+              decoration: BoxDecoration(gradient: AppTheme.bgGradient),
+              child: SizedBox.expand(),
             ),
             // Animated orb 1 — cyan
             Positioned(
@@ -44,7 +45,7 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
               right: -80 + (_controller.value * 40),
               child: _Orb(
                 size: 500,
-                color: AppTheme.accentCyan.withOpacity(0.06),
+                color: AppTheme.accentCyan.withValues(alpha: 0.06),
               ),
             ),
             // Animated orb 2 — purple
@@ -53,7 +54,7 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
               left: -100 + (_controller.value * 30),
               child: _Orb(
                 size: 600,
-                color: AppTheme.accentPurple.withOpacity(0.06),
+                color: AppTheme.accentPurple.withValues(alpha: 0.06),
               ),
             ),
             // Grid lines overlay
@@ -92,7 +93,7 @@ class _GridPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.white.withOpacity(0.025)
+      ..color = Colors.white.withValues(alpha: 0.025)
       ..strokeWidth = 1;
 
     const spacing = 60.0;

@@ -157,16 +157,16 @@ class _ContactSectionState extends State<ContactSection> {
           children: [
             // Status banners
             if (_status == _FormStatus.success)
-              _StatusBanner(
+              const _StatusBanner(
                 message: '✅  Message sent! I\'ll get back to you soon.',
-                color: const Color(0xFF00FFB4),
-                bgColor: const Color(0xFF00FFB4),
+                color: Color(0xFF00FFB4),
+                bgColor: Color(0xFF00FFB4),
               ),
             if (_status == _FormStatus.error)
-              _StatusBanner(
+              const _StatusBanner(
                 message: '❌  Something went wrong. Please try again.',
-                color: const Color(0xFFFF6B6B),
-                bgColor: const Color(0xFFFF5050),
+                color: Color(0xFFFF6B6B),
+                bgColor: Color(0xFFFF5050),
               ),
 
             _FormField(
@@ -268,16 +268,16 @@ class _FormField extends StatelessWidget {
       style: AppTheme.bodyLarge.copyWith(color: AppTheme.textMain, fontSize: 15),
       decoration: InputDecoration(
         hintText: label,
-        hintStyle: AppTheme.bodyLarge.copyWith(color: AppTheme.textMuted.withOpacity(0.6)),
+        hintStyle: AppTheme.bodyLarge.copyWith(color: AppTheme.textMuted.withValues(alpha: 0.6)),
         filled: true,
-        fillColor: Colors.white.withOpacity(0.04),
+        fillColor: Colors.white.withValues(alpha: 0.04),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: AppTheme.glassBorder),
+          borderSide: const BorderSide(color: AppTheme.glassBorder),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: AppTheme.glassBorder),
+          borderSide: const BorderSide(color: AppTheme.glassBorder),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -322,8 +322,8 @@ class _SubmitButtonState extends State<_SubmitButton> {
             gradient: AppTheme.cyanPurpleGradient,
             borderRadius: BorderRadius.circular(50),
             boxShadow: _hovered && !isLoading
-                ? [BoxShadow(color: AppTheme.accentCyan.withOpacity(0.4), blurRadius: 20)]
-                : [],
+                ? [BoxShadow(color: AppTheme.accentCyan.withValues(alpha: 0.4), blurRadius: 20)]
+                : const [],
           ),
           child: isLoading
               ? const SizedBox(
@@ -359,8 +359,8 @@ class _StatusBanner extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: bgColor.withOpacity(0.1),
-        border: Border.all(color: color.withOpacity(0.3)),
+        color: bgColor.withValues(alpha: 0.1),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Text(message,
