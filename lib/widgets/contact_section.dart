@@ -228,13 +228,15 @@ class _ContactLinkState extends State<_ContactLink> {
           children: [
             Text(widget.icon, style: const TextStyle(fontSize: 18)),
             const SizedBox(width: 12),
-            AnimatedDefaultTextStyle(
-              duration: const Duration(milliseconds: 200),
-              style: AppTheme.bodyLarge.copyWith(
-                color: _hovered ? AppTheme.accentCyan : AppTheme.textMuted,
-                fontSize: 15,
+            Flexible(
+              child: AnimatedDefaultTextStyle(
+                duration: const Duration(milliseconds: 200),
+                style: AppTheme.bodyLarge.copyWith(
+                  color: _hovered ? AppTheme.accentCyan : AppTheme.textMuted,
+                  fontSize: 15,
+                ),
+                child: Text(widget.label, overflow: TextOverflow.ellipsis),
               ),
-              child: Text(widget.label),
             ),
           ],
         ),
