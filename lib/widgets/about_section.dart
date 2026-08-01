@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+
 import '../theme/app_theme.dart';
 
 class AboutSection extends StatelessWidget {
@@ -36,7 +36,6 @@ class AboutSection extends StatelessWidget {
 
   List<Widget> _cards() => [
         _AboutCard(
-          delay: 100.ms,
           title: 'Experience',
           accentColor: AppTheme.accentCyan,
           content: Column(
@@ -55,7 +54,6 @@ class AboutSection extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         _AboutCard(
-          delay: 200.ms,
           title: 'Expertise',
           accentColor: AppTheme.accentPurple,
           content: Column(
@@ -77,7 +75,6 @@ class AboutSection extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         _AboutCard(
-          delay: 300.ms,
           title: 'Impact',
           accentColor: AppTheme.accentCyan,
           content: Column(
@@ -100,13 +97,11 @@ class AboutSection extends StatelessWidget {
 }
 
 class _AboutCard extends StatelessWidget {
-  final Duration delay;
   final String title;
   final Color accentColor;
   final Widget content;
   const _AboutCard(
-      {required this.delay,
-      required this.title,
+      {required this.title,
       required this.accentColor,
       required this.content});
 
@@ -129,10 +124,7 @@ class _AboutCard extends StatelessWidget {
           content,
         ],
       ),
-    )
-        .animate()
-        .fadeIn(delay: delay, duration: 500.ms)
-        .slideY(begin: 0.2, end: 0);
+    );
   }
 }
 
@@ -182,9 +174,6 @@ class _SectionTitle extends StatelessWidget {
           ),
         ],
       ),
-    )
-        .animate()
-        .fadeIn(duration: 500.ms)
-        .slideY(begin: 0.2, end: 0);
+    );
   }
 }

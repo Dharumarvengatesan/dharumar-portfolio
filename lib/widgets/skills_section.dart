@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+
 import '../theme/app_theme.dart';
 
 const _skills = [
@@ -28,7 +28,7 @@ class SkillsSection extends StatelessWidget {
               spacing: 12,
               runSpacing: 12,
               children: List.generate(_skills.length, (i) {
-                return _SkillChip(label: _skills[i], delay: (i * 50).ms);
+                return _SkillChip(label: _skills[i]);
               }),
             ),
           ),
@@ -40,8 +40,7 @@ class SkillsSection extends StatelessWidget {
 
 class _SkillChip extends StatefulWidget {
   final String label;
-  final Duration delay;
-  const _SkillChip({required this.label, required this.delay});
+  const _SkillChip({required this.label});
 
   @override
   State<_SkillChip> createState() => _SkillChipState();
@@ -86,10 +85,7 @@ class _SkillChipState extends State<_SkillChip> {
           ),
         ),
       ),
-    )
-        .animate()
-        .fadeIn(delay: widget.delay, duration: 400.ms)
-        .scaleXY(begin: 0.8, end: 1.0);
+    );
   }
 }
 
@@ -120,6 +116,6 @@ class _SectionTitle extends StatelessWidget {
           ),
         ],
       ),
-    ).animate().fadeIn(duration: 500.ms).slideY(begin: 0.2, end: 0);
+    );
   }
 }

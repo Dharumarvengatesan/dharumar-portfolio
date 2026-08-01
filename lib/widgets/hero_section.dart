@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 import '../theme/app_theme.dart';
 
@@ -95,10 +95,7 @@ class _HeroSectionState extends State<HeroSection>
                       .copyWith(fontSize: 14, fontWeight: FontWeight.w500)),
             ],
           ),
-        )
-            .animate()
-            .fadeIn(delay: 100.ms, duration: 500.ms)
-            .slideY(begin: 0.3, end: 0),
+        ),
 
         const SizedBox(height: 20),
 
@@ -106,20 +103,14 @@ class _HeroSectionState extends State<HeroSection>
                 style: AppTheme.bodyLarge.copyWith(
                     color: AppTheme.textMuted,
                     fontSize: 17,
-                    fontWeight: FontWeight.w500))
-            .animate()
-            .fadeIn(delay: 150.ms, duration: 500.ms)
-            .slideY(begin: 0.3, end: 0),
+                    fontWeight: FontWeight.w500)),
 
         const SizedBox(height: 8),
 
         Text('Dharumar V.',
                 style: AppTheme.displayLarge.copyWith(
                   fontSize: isMobile ? 42 : 64,
-                ))
-            .animate()
-            .fadeIn(delay: 200.ms, duration: 500.ms)
-            .slideY(begin: 0.3, end: 0),
+                )),
 
         const SizedBox(height: 8),
 
@@ -133,10 +124,7 @@ class _HeroSectionState extends State<HeroSection>
               fontSize: isMobile ? 22 : 32,
             ),
           ),
-        )
-            .animate()
-            .fadeIn(delay: 300.ms, duration: 500.ms)
-            .slideY(begin: 0.3, end: 0),
+        ),
 
         const SizedBox(height: 16),
 
@@ -147,10 +135,7 @@ class _HeroSectionState extends State<HeroSection>
             style: AppTheme.bodyLarge,
             textAlign: isMobile ? TextAlign.center : TextAlign.start,
           ),
-        )
-            .animate()
-            .fadeIn(delay: 400.ms, duration: 500.ms)
-            .slideY(begin: 0.3, end: 0),
+        ),
 
         const SizedBox(height: 24),
 
@@ -165,10 +150,7 @@ class _HeroSectionState extends State<HeroSection>
             SizedBox(width: 32),
             _StatItem('99.9%', 'Crash-Free'),
           ],
-        )
-            .animate()
-            .fadeIn(delay: 450.ms, duration: 500.ms)
-            .slideY(begin: 0.3, end: 0),
+        ),
 
         const SizedBox(height: 32),
 
@@ -183,10 +165,7 @@ class _HeroSectionState extends State<HeroSection>
               // scroll to contact — handled via parent
             }),
           ],
-        )
-            .animate()
-            .fadeIn(delay: 500.ms, duration: 500.ms)
-            .slideY(begin: 0.3, end: 0),
+        ),
       ],
     );
   }
@@ -273,10 +252,7 @@ class _HeroSectionState extends State<HeroSection>
           ],
         ),
       ),
-    )
-        .animate()
-        .fadeIn(delay: 200.ms, duration: 800.ms)
-        .scaleXY(begin: 0.9, end: 1.0);
+    );
   }
 
   Widget _flutterIcon() {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 import '../theme/app_theme.dart';
 import '../models/project_model.dart';
@@ -123,12 +123,7 @@ class _ProjectCardState extends State<_ProjectCard> {
             ),
           ],
         ),
-      )
-          .animate()
-          .fadeIn(
-              delay: Duration(milliseconds: widget.index * 100),
-              duration: 500.ms)
-          .slideY(begin: 0.2, end: 0),
+      ),
     );
   }
 }
@@ -260,6 +255,6 @@ class _SectionTitle extends StatelessWidget {
           ),
         ],
       ),
-    ).animate().fadeIn(duration: 500.ms).slideY(begin: 0.2, end: 0);
+    );
   }
 }
