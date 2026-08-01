@@ -21,5 +21,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  assets:
-    - assets/images/
+  # assets/images/ is declared here once a profile.jpg is added:
+  # assets:
+  #   - assets/images/
