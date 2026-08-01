@@ -29,42 +29,52 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _controller,
-      builder: (context, child) {
-        return Stack(
-          children: [
-            // Base gradient
-            const DecoratedBox(
-              decoration: BoxDecoration(gradient: AppTheme.bgGradient),
-              child: SizedBox.expand(),
-            ),
-            // Animated orb 1 — cyan
-            Positioned(
-              top: -100 + (_controller.value * 60),
-              right: -80 + (_controller.value * 40),
-              child: _Orb(
-                size: 500,
-                color: AppTheme.accentCyan.withValues(alpha: 0.06),
-              ),
-            ),
-            // Animated orb 2 — purple
-            Positioned(
-              bottom: -120 + (_controller.value * 50),
-              left: -100 + (_controller.value * 30),
-              child: _Orb(
-                size: 600,
-                color: AppTheme.accentPurple.withValues(alpha: 0.06),
-              ),
-            ),
-            // Grid lines overlay
-            CustomPaint(
-              painter: _GridPainter(),
-              size: MediaQuery.of(context).size,
-            ),
-          ],
-        );
-      },
+    return Stack(
+      children: [
+        // ── Static layers (painted once, never rebuild) ─────────────────
+        const RepaintBoundary(
+          child: DecoratedBox(
+            decoration: BoxDecoration(gradient: AppTheme.bgGradient),
+            child: SizedBox.expand(),
+          ),
+        ),
+
+        // Grid is static — keep it outside AnimatedBuilder so it doesn't
+        // repaint every frame alongside the orb animation.
+        RepaintBoundary(
+          child: CustomPaint(
+            painter: _GridPainter(),
+            child: const SizedBox.expand(),
+          ),
+        ),
+
+        // ── Animated orbs (only this subtree repaints at 60 fps) ────────
+        AnimatedBuilder(
+          animation: _controller,
+          builder: (context, _) {
+            return Stack(
+              children: [
+                Positioned(
+                  top: -100 + (_controller.value * 60),
+                  right: -80 + (_controller.value * 40),
+                  child: _Orb(
+                    size: 500,
+                    color: AppTheme.accentCyan.withValues(alpha: 0.06),
+                  ),
+                ),
+                Positioned(
+                  bottom: -120 + (_controller.value * 50),
+                  left: -100 + (_controller.value * 30),
+                  child: _Orb(
+                    size: 600,
+                    color: AppTheme.accentPurple.withValues(alpha: 0.06),
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
+      ],
     );
   }
 }
@@ -106,5 +116,5 @@ class _GridPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_GridPainter oldDelegate) => false;
+  bool shouldRepaint(_GridPainter old) => false;
 }

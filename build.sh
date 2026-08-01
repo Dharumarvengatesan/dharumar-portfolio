@@ -14,5 +14,7 @@ flutter config --no-analytics --enable-web
 
 flutter pub get
 
-# Note: --web-renderer was removed in Flutter 3.22+. CanvasKit is the default renderer.
-flutter build web --release
+# Use --wasm (Skwasm renderer) for faster multi-threaded rendering.
+# Requires COOP + COEP headers (set in vercel.json) to enable SharedArrayBuffer.
+# Falls back to CanvasKit automatically if headers are missing.
+flutter build web --release --wasm
