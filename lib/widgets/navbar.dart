@@ -36,26 +36,28 @@ class _NavbarState extends State<Navbar> {
     final ctx = key.currentContext;
     if (ctx == null) return;
 
-    final renderBox = ctx.findRenderObject() as RenderBox?;
-    if (renderBox == null || !renderBox.attached) return;
+    final renderObject = ctx.findRenderObject();
+    if (renderObject == null) return;
 
-    // Absolute Y position of section in scroll content:
-    //   current scroll offset + where the section appears on screen now
-    //   minus navbar height so content isn't hidden behind the fixed navbar
+    // getOffsetToReveal gives the ABSOLUTE scroll offset to position
+    // the top of the widget at the top of the viewport — calculated
+    // geometrically from the render tree, independent of current scroll state.
+    // This is correct even during a mid-animation click (no stale screen position).
     const navbarHeight = 72.0;
-    final dy = renderBox.localToGlobal(Offset.zero).dy;
-    final targetOffset =
-        (widget.scrollController.offset + dy - navbarHeight).clamp(
-      0.0,
-      widget.scrollController.position.maxScrollExtent,
-    );
+    final viewport = RenderAbstractViewport.of(renderObject);
+    final revealOffset =
+        viewport.getOffsetToReveal(renderObject, 0.0).offset;
 
     widget.scrollController.animateTo(
-      targetOffset,
+      (revealOffset - navbarHeight).clamp(
+        0.0,
+        widget.scrollController.position.maxScrollExtent,
+      ),
       duration: const Duration(milliseconds: 600),
       curve: Curves.easeInOut,
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
