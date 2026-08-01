@@ -34,11 +34,27 @@ class _NavbarState extends State<Navbar> {
   void _scrollToSection(int index) {
     final key = widget.sectionKeys[index];
     final ctx = key.currentContext;
-    if (ctx != null) {
-      Scrollable.ensureVisible(ctx,
-          duration: const Duration(milliseconds: 700),
-          curve: Curves.easeInOut);
-    }
+    if (ctx == null) return;
+
+    final renderBox = ctx.findRenderObject() as RenderBox?;
+    if (renderBox == null || !renderBox.attached) return;
+
+    // Absolute Y position of section in scroll content:
+    //   current scroll offset + where the section appears on screen now
+    //   minus navbar height so content isn't hidden behind the fixed navbar
+    const navbarHeight = 72.0;
+    final dy = renderBox.localToGlobal(Offset.zero).dy;
+    final targetOffset =
+        (widget.scrollController.offset + dy - navbarHeight).clamp(
+      0.0,
+      widget.scrollController.position.maxScrollExtent,
+    );
+
+    widget.scrollController.animateTo(
+      targetOffset,
+      duration: const Duration(milliseconds: 600),
+      curve: Curves.easeInOut,
+    );
   }
 
   @override
