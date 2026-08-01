@@ -14,7 +14,7 @@ flutter config --no-analytics --enable-web
 
 flutter pub get
 
-# Use --wasm (Skwasm renderer) for faster multi-threaded rendering.
-# Requires COOP + COEP headers (set in vercel.json) to enable SharedArrayBuffer.
-# Falls back to CanvasKit automatically if headers are missing.
-flutter build web --release --wasm
+# Build with CanvasKit (default, most compatible renderer).
+# --wasm (Skwasm) was removed because it requires COOP/COEP headers
+# and was causing flutter-first-frame to never fire on Vercel.
+flutter build web --release

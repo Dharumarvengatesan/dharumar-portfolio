@@ -4,19 +4,6 @@
   "framework": null,
   "headers": [
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cross-Origin-Opener-Policy",
-          "value": "same-origin"
-        },
-        {
-          "key": "Cross-Origin-Embedder-Policy",
-          "value": "credentialless"
-        }
-      ]
-    },
-    {
       "source": "/flutter_service_worker.js",
       "headers": [
         {
@@ -35,7 +22,7 @@
       ]
     },
     {
-      "source": "/(.*\\.(wasm|js|png|jpg|svg|ttf|otf|woff|woff2|json))",
+      "source": "/(.*\\.(js|wasm|png|jpg|svg|ttf|otf|woff|woff2|json))",
       "headers": [
         {
           "key": "Cache-Control",
@@ -44,10 +31,10 @@
       ]
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
