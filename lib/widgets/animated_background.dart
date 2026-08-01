@@ -29,23 +29,20 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return Stack(
       children: [
-        // ── Static layers (painted once, never rebuild) ─────────────────
-        const RepaintBoundary(
-          child: DecoratedBox(
-            decoration: BoxDecoration(gradient: AppTheme.bgGradient),
-            child: SizedBox.expand(),
-          ),
+        // ── Static base gradient (never repaints) ───────────────────────
+        const DecoratedBox(
+          decoration: BoxDecoration(gradient: AppTheme.bgGradient),
+          child: SizedBox.expand(),
         ),
 
-        // Grid is static — keep it outside AnimatedBuilder so it doesn't
-        // repaint every frame alongside the orb animation.
-        RepaintBoundary(
-          child: CustomPaint(
-            painter: _GridPainter(),
-            child: const SizedBox.expand(),
-          ),
+        // ── Static grid — outside AnimatedBuilder so it only paints once ─
+        CustomPaint(
+          painter: _GridPainter(),
+          size: screenSize,
         ),
 
         // ── Animated orbs (only this subtree repaints at 60 fps) ────────
