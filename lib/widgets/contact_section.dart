@@ -139,7 +139,7 @@ class _ContactSectionState extends State<ContactSection> {
           label: 'Kallakurichi, Tamil Nadu, India',
         ),
       ],
-    ).animate().fadeIn(delay: 100.ms, duration: 500.ms).slideX(begin: -0.1, end: 0);
+    );
   }
 
   Widget _buildForm() {
@@ -197,7 +197,7 @@ class _ContactSectionState extends State<ContactSection> {
           ],
         ),
       ),
-    ).animate().fadeIn(delay: 200.ms, duration: 500.ms).slideX(begin: 0.1, end: 0);
+    );
   }
 }
 
@@ -367,7 +367,7 @@ class _StatusBanner extends StatelessWidget {
       ),
       child: Text(message,
           style: TextStyle(color: color, fontSize: 14, fontWeight: FontWeight.w500)),
-    ).animate().fadeIn(duration: 300.ms).slideY(begin: -0.2, end: 0);
+    );
   }
 }
 
@@ -394,6 +394,6 @@ class _SectionTitle extends StatelessWidget {
           ),
         ],
       ),
-    ).animate().fadeIn(duration: 500.ms).slideY(begin: 0.2, end: 0);
+    );
   }
 }
