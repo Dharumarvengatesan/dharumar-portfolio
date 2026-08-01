@@ -36,27 +36,18 @@ class _NavbarState extends State<Navbar> {
     final ctx = key.currentContext;
     if (ctx == null) return;
 
-    final renderObject = ctx.findRenderObject();
-    if (renderObject == null) return;
-
-    // getOffsetToReveal gives the ABSOLUTE scroll offset to position
-    // the top of the widget at the top of the viewport — calculated
-    // geometrically from the render tree, independent of current scroll state.
-    // This is correct even during a mid-animation click (no stale screen position).
-    const navbarHeight = 72.0;
-    final viewport = RenderAbstractViewport.of(renderObject);
-    final revealOffset =
-        viewport.getOffsetToReveal(renderObject, 0.0).offset;
-
-    widget.scrollController.animateTo(
-      (revealOffset - navbarHeight).clamp(
-        0.0,
-        widget.scrollController.position.maxScrollExtent,
-      ),
+    // alignment: 0.0  → align leading edge of section to top of viewport
+    // alignmentPolicy: explicit → ALWAYS apply, even if already visible,
+    //   and even if called mid-animation (interrupts previous animation cleanly)
+    Scrollable.ensureVisible(
+      ctx,
+      alignment: 0.0,
+      alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
       duration: const Duration(milliseconds: 600),
       curve: Curves.easeInOut,
     );
   }
+
 
 
   @override
