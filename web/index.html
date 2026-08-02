@@ -4,7 +4,7 @@
   <base href="$FLUTTER_BASE_HREF">
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <!-- SEO -->
   <title>Dharumar V — Senior Flutter Developer</title>
@@ -36,7 +36,9 @@
       margin: 0;
       padding: 0;
       background-color: #0A0A1A;
-      overflow: hidden;
+      overflow: hidden; /* Flutter manages its own scrolling */
+      /* Prevent browser from expanding the viewport beyond device-width */
+      max-width: 100vw;
     }
 
     #loading {

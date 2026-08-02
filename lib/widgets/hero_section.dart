@@ -32,60 +32,75 @@ class _HeroSectionState extends State<HeroSection>
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final isMobile = size.width < 900;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isMobile = constraints.maxWidth < 768;
+        final size = MediaQuery.of(context).size;
 
-    return Container(
-      // On desktop keep full-height feel; on mobile just fit the content
-      constraints: isMobile
-          ? const BoxConstraints()
-          : BoxConstraints(minHeight: size.height),
-      padding: EdgeInsets.fromLTRB(
-        isMobile ? 20 : 80,
-        isMobile ? 80 : 120,
-        isMobile ? 20 : 80,
-        isMobile ? 40 : 60,
-      ),
-      child: isMobile
-          ? Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                _buildPhoto(isMobile: true),
-                const SizedBox(height: 32),
-                _buildText(isMobile: true),
-              ],
-            )
-          : Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(child: _buildText(isMobile: false)),
-                const SizedBox(width: 60),
-                _buildPhoto(isMobile: false),
-              ],
-            ),
+        return Container(
+          constraints: isMobile
+              ? const BoxConstraints()
+              : BoxConstraints(minHeight: size.height),
+          padding: EdgeInsets.fromLTRB(
+            isMobile ? 20 : 80,
+            isMobile ? 70 : 120,
+            isMobile ? 20 : 80,
+            isMobile ? 36 : 60,
+          ),
+          child: isMobile
+              ? _buildMobileLayout()
+              : Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(child: _buildText(isMobile: false)),
+                    const SizedBox(width: 60),
+                    _buildPhoto(isMobile: false),
+                  ],
+                ),
+        );
+      },
+    );
+  }
+
+  Widget _buildMobileLayout() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // Photo + text side by side on mobile (compact)
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(child: _buildText(isMobile: true)),
+            const SizedBox(width: 12),
+            _buildPhoto(isMobile: true),
+          ],
+        ),
+      ],
     );
   }
 
   Widget _buildText({required bool isMobile}) {
     return Column(
-      crossAxisAlignment:
-          isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
         // Available badge
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: EdgeInsets.symmetric(
+              horizontal: isMobile ? 10 : 16, vertical: isMobile ? 6 : 8),
           decoration: BoxDecoration(
             color: AppTheme.accentCyan.withValues(alpha: 0.1),
-            border: Border.all(color: AppTheme.accentCyan.withValues(alpha: 0.25)),
+            border:
+                Border.all(color: AppTheme.accentCyan.withValues(alpha: 0.25)),
             borderRadius: BorderRadius.circular(50),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                width: 8,
-                height: 8,
+                width: 7,
+                height: 7,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppTheme.accentCyan,
@@ -94,30 +109,31 @@ class _HeroSectionState extends State<HeroSection>
                   ],
                 ),
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 6),
               Text('Available for opportunities',
-                  style: AppTheme.labelStyle
-                      .copyWith(fontSize: 14, fontWeight: FontWeight.w500)),
+                  style: AppTheme.labelStyle.copyWith(
+                      fontSize: isMobile ? 11 : 14,
+                      fontWeight: FontWeight.w500)),
             ],
           ),
         ),
 
-        const SizedBox(height: 20),
+        SizedBox(height: isMobile ? 12 : 20),
 
         Text('Hi, my name is',
-                style: AppTheme.bodyLarge.copyWith(
-                    color: AppTheme.textMuted,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w500)),
+            style: AppTheme.bodyLarge.copyWith(
+                color: AppTheme.textMuted,
+                fontSize: isMobile ? 13 : 17,
+                fontWeight: FontWeight.w500)),
 
-        const SizedBox(height: 8),
+        SizedBox(height: isMobile ? 4 : 8),
 
         Text('Dharumar V.',
-                style: AppTheme.displayLarge.copyWith(
-                  fontSize: isMobile ? 42 : 64,
-                )),
+            style: AppTheme.displayLarge.copyWith(
+              fontSize: isMobile ? 28 : 64,
+            )),
 
-        const SizedBox(height: 8),
+        SizedBox(height: isMobile ? 4 : 8),
 
         ShaderMask(
           shaderCallback: (bounds) =>
@@ -126,49 +142,47 @@ class _HeroSectionState extends State<HeroSection>
             'Senior Flutter Developer',
             style: AppTheme.displayMedium.copyWith(
               color: Colors.white,
-              fontSize: isMobile ? 22 : 32,
+              fontSize: isMobile ? 15 : 32,
             ),
           ),
         ),
 
-        const SizedBox(height: 16),
+        SizedBox(height: isMobile ? 8 : 16),
 
-        SizedBox(
-          width: isMobile ? double.infinity : 520,
-          child: Text(
-            '6+ years building scalable cross-platform mobile applications using Flutter, Firebase, REST APIs, and clean architecture.',
-            style: AppTheme.bodyLarge,
-            textAlign: isMobile ? TextAlign.center : TextAlign.start,
-          ),
+        Text(
+          '6+ years building scalable cross-platform mobile applications using Flutter, Firebase, REST APIs, and clean architecture.',
+          style: AppTheme.bodyLarge.copyWith(fontSize: isMobile ? 12 : 16),
+          textAlign: TextAlign.start,
         ),
 
-        const SizedBox(height: 24),
+        SizedBox(height: isMobile ? 14 : 24),
 
         // Stats
         Row(
-          mainAxisAlignment:
-              isMobile ? MainAxisAlignment.center : MainAxisAlignment.start,
-          children: const [
-            _StatItem('6+', 'Years Exp.'),
-            SizedBox(width: 32),
-            _StatItem('6+', 'Live Apps'),
-            SizedBox(width: 32),
-            _StatItem('99.9%', 'Crash-Free'),
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            _StatItem('6+', 'Years Exp.', isMobile),
+            SizedBox(width: isMobile ? 16 : 32),
+            _StatItem('6+', 'Live Apps', isMobile),
+            SizedBox(width: isMobile ? 16 : 32),
+            _StatItem('99.9%', 'Crash-Free', isMobile),
           ],
         ),
 
-        const SizedBox(height: 32),
+        SizedBox(height: isMobile ? 18 : 32),
 
         // CTA Buttons
-        Row(
-          mainAxisAlignment:
-              isMobile ? MainAxisAlignment.center : MainAxisAlignment.start,
+        Wrap(
+          spacing: 12,
+          runSpacing: 10,
           children: [
-            _PrimaryButton('View Apps', () => _launchUrl('https://play.google.com/store/apps/dev?id=8687668766227765637')),
-            const SizedBox(width: 16),
+            _PrimaryButton('View Apps',
+                () => _launchUrl(
+                    'https://play.google.com/store/apps/dev?id=8687668766227765637'),
+                isMobile: isMobile),
             _OutlineButton('Contact Me', () {
               widget.onContactTap?.call();
-            }),
+            }, isMobile: isMobile),
           ],
         ),
       ],
@@ -176,21 +190,22 @@ class _HeroSectionState extends State<HeroSection>
   }
 
   Widget _buildPhoto({required bool isMobile}) {
-    final photoSize = isMobile ? 220.0 : 300.0;
+    final photoSize = isMobile ? 160.0 : 300.0;
     return AnimatedBuilder(
       animation: _floatController,
       builder: (context, child) {
-        final offset = (_floatController.value - 0.5) * 20;
+        final offset = (_floatController.value - 0.5) * 12;
         return Transform.translate(
           offset: Offset(0, offset),
           child: child,
         );
       },
       child: SizedBox(
-        width: photoSize + 60,
-        height: photoSize + 60,
+        width: isMobile ? photoSize + 40 : photoSize + 60,
+        height: isMobile ? photoSize + 40 : photoSize + 60,
         child: Stack(
           alignment: Alignment.center,
+          clipBehavior: Clip.none,
           children: [
             // Gradient ring
             Container(
@@ -277,11 +292,13 @@ class _HeroSectionState extends State<HeroSection>
 class _StatItem extends StatelessWidget {
   final String value;
   final String label;
-  const _StatItem(this.value, this.label);
+  final bool isMobile;
+  const _StatItem(this.value, this.label, this.isMobile);
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ShaderMask(
           shaderCallback: (bounds) =>
@@ -289,10 +306,12 @@ class _StatItem extends StatelessWidget {
           child: Text(value,
               style: AppTheme.headingLarge.copyWith(
                   color: Colors.white,
-                  fontSize: 26,
+                  fontSize: isMobile ? 18 : 26,
                   fontWeight: FontWeight.w800)),
         ),
-        Text(label, style: AppTheme.bodySmall),
+        Text(label,
+            style: AppTheme.bodySmall
+                .copyWith(fontSize: isMobile ? 10 : 13)),
       ],
     );
   }
@@ -301,7 +320,8 @@ class _StatItem extends StatelessWidget {
 class _PrimaryButton extends StatefulWidget {
   final String label;
   final VoidCallback onTap;
-  const _PrimaryButton(this.label, this.onTap);
+  final bool isMobile;
+  const _PrimaryButton(this.label, this.onTap, {this.isMobile = false});
 
   @override
   State<_PrimaryButton> createState() => _PrimaryButtonState();
@@ -320,19 +340,23 @@ class _PrimaryButtonState extends State<_PrimaryButton> {
         onTap: widget.onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
-          padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
+          padding: EdgeInsets.symmetric(
+              horizontal: widget.isMobile ? 20 : 28,
+              vertical: widget.isMobile ? 10 : 14),
           decoration: BoxDecoration(
             gradient: AppTheme.cyanPurpleGradient,
             borderRadius: BorderRadius.circular(50),
             boxShadow: _hovered
-                ? [BoxShadow(color: AppTheme.accentCyan.withValues(alpha: 0.4), blurRadius: 20)]
+                ? [BoxShadow(
+                    color: AppTheme.accentCyan.withValues(alpha: 0.4),
+                    blurRadius: 20)]
                 : const [],
           ),
           child: Text(widget.label,
-              style: const TextStyle(
+              style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w600,
-                  fontSize: 15)),
+                  fontSize: widget.isMobile ? 13 : 15)),
         ),
       ),
     );
@@ -342,7 +366,8 @@ class _PrimaryButtonState extends State<_PrimaryButton> {
 class _OutlineButton extends StatefulWidget {
   final String label;
   final VoidCallback onTap;
-  const _OutlineButton(this.label, this.onTap);
+  final bool isMobile;
+  const _OutlineButton(this.label, this.onTap, {this.isMobile = false});
 
   @override
   State<_OutlineButton> createState() => _OutlineButtonState();
@@ -361,22 +386,22 @@ class _OutlineButtonState extends State<_OutlineButton> {
         onTap: widget.onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
-          padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
+          padding: EdgeInsets.symmetric(
+              horizontal: widget.isMobile ? 20 : 28,
+              vertical: widget.isMobile ? 10 : 14),
           decoration: BoxDecoration(
             color: _hovered
                 ? AppTheme.accentCyan.withValues(alpha: 0.1)
                 : Colors.transparent,
             border: Border.all(
-                color: _hovered
-                    ? AppTheme.accentCyan
-                    : AppTheme.glassBorder),
+                color: _hovered ? AppTheme.accentCyan : AppTheme.glassBorder),
             borderRadius: BorderRadius.circular(50),
           ),
           child: Text(widget.label,
               style: TextStyle(
                   color: _hovered ? AppTheme.accentCyan : AppTheme.textMain,
                   fontWeight: FontWeight.w600,
-                  fontSize: 15)),
+                  fontSize: widget.isMobile ? 13 : 15)),
         ),
       ),
     );
