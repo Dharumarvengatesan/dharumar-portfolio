@@ -4,7 +4,8 @@ import 'package:url_launcher/url_launcher.dart';
 import '../theme/app_theme.dart';
 
 class HeroSection extends StatefulWidget {
-  const HeroSection({super.key});
+  final VoidCallback? onContactTap;
+  const HeroSection({super.key, this.onContactTap});
 
   @override
   State<HeroSection> createState() => _HeroSectionState();
@@ -35,19 +36,23 @@ class _HeroSectionState extends State<HeroSection>
     final isMobile = size.width < 900;
 
     return Container(
-      constraints: BoxConstraints(minHeight: size.height),
+      // On desktop keep full-height feel; on mobile just fit the content
+      constraints: isMobile
+          ? const BoxConstraints()
+          : BoxConstraints(minHeight: size.height),
       padding: EdgeInsets.fromLTRB(
-        isMobile ? 24 : 80,
-        isMobile ? 100 : 120,
-        isMobile ? 24 : 80,
-        60,
+        isMobile ? 20 : 80,
+        isMobile ? 80 : 120,
+        isMobile ? 20 : 80,
+        isMobile ? 40 : 60,
       ),
       child: isMobile
           ? Column(
               crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 _buildPhoto(isMobile: true),
-                const SizedBox(height: 40),
+                const SizedBox(height: 32),
                 _buildText(isMobile: true),
               ],
             )
@@ -162,7 +167,7 @@ class _HeroSectionState extends State<HeroSection>
             _PrimaryButton('View Apps', () => _launchUrl('https://play.google.com/store/apps/dev?id=8687668766227765637')),
             const SizedBox(width: 16),
             _OutlineButton('Contact Me', () {
-              // scroll to contact — handled via parent
+              widget.onContactTap?.call();
             }),
           ],
         ),

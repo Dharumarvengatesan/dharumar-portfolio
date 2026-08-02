@@ -69,19 +69,17 @@ class AboutSection extends StatelessWidget {
                           ))
                       .toList(),
                 )
-              : IntrinsicHeight(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: _cards(isMobile: false, isSmallMobile: false)
-                        .map((c) => Expanded(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8),
-                                child: c,
-                              ),
-                            ))
-                        .toList(),
-                  ),
+              : Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: _cards(isMobile: false, isSmallMobile: false)
+                      .map((c) => Expanded(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8),
+                              child: c,
+                            ),
+                          ))
+                      .toList(),
                 ),
         ],
       ),

@@ -64,6 +64,16 @@ class _HomePageState extends State<_HomePage> {
     super.dispose();
   }
 
+  void _scrollToSection(GlobalKey key) {
+    final ctx = key.currentContext;
+    if (ctx == null) return;
+    Scrollable.ensureVisible(
+      ctx,
+      duration: const Duration(milliseconds: 600),
+      curve: Curves.easeInOut,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +88,9 @@ class _HomePageState extends State<_HomePage> {
             child: Column(
               children: [
                 // Hero
-                const HeroSection(),
+                HeroSection(
+                  onContactTap: () => _scrollToSection(_contactKey),
+                ),
 
                 // About
                 Container(key: _aboutKey, child: const AboutSection()),
