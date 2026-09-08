@@ -1,11 +1,22 @@
 {
-  "buildCommand": "bash build.sh",
-  "outputDirectory": "build/web",
-  "framework": null,
-  "rewrites": [
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/assets/(.*)",
+      "dest": "/survey_website/assets/$1"
+    },
+    {
+      "src": "/css/(.*)",
+      "dest": "/survey_website/css/$1"
+    },
+    {
+      "src": "/js/(.*)",
+      "dest": "/survey_website/js/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/survey_website/$1"
     }
   ]
 }
